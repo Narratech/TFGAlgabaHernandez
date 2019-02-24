@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SampleScenes/First Person/Outdoor Motion.unity
     guid: 2995a6519d6cc0f47b4a18659934065d
+  - enabled: 0
+    path: Assets/SampleScenes/Hands/AvatarWithGrab.unity
+    guid: d749c49d7da3bca448372bd9b116b833
   m_configObjects: {}
