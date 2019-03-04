@@ -3,14 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - pickupAble
-  - bullet
-  - floor
-  - wall
-  - Fader
-  - dontmove
-  - listlast
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -20,16 +13,16 @@ TagManager:
   - UI
   - 
   - 
-  - NoFadeOut
-  - ColliderGrid
-  - Gazable
+  - Ethan
+  - MazeWalls
+  - MazeTurret
+  - MazeTurretBullet
+  - Bg
+  - FPSWeapon
   - Player
-  - LitStairs1
-  - LitStairs2
-  - Wall
-  - TeleportPoints
-  - DemoUI
-  - Toys
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -47,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: GUI
+    uniqueID: 2379361113
     locked: 0
