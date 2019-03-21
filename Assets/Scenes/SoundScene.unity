@@ -154,7 +154,6 @@ GameObject:
   - component: {fileID: 172244623}
   - component: {fileID: 172244622}
   - component: {fileID: 172244621}
-  - component: {fileID: 172244620}
   - component: {fileID: 172244619}
   - component: {fileID: 172244625}
   m_Layer: 0
@@ -261,20 +260,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &172244620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172244618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bd6581af14ea9244ace93e64a39cea3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CounterPanel: {fileID: 1717047552}
-  testTime: 10
 --- !u!135 &172244621
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -356,11 +341,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 172244618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26bb17691cf8f4f44ad0b84e5d240b8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3176d6c2004ca5a42819923760847bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serviceUrl: https://gateway-lon.watsonplatform.net/speech-to-text/api
-  _iamApikey: ck8BhZx_VVcApPmGqCXGLB58ns_zcy6FsjRUwc-u5h9-
 --- !u!1 &309816173
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +502,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 172244620}
+      - m_Target: {fileID: 0}
         m_MethodName: calculateSilence
         m_Mode: 1
         m_Arguments:
@@ -796,7 +779,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 172244620}
+      - m_Target: {fileID: 0}
         m_MethodName: minuteTest
         m_Mode: 1
         m_Arguments:
