@@ -21,17 +21,17 @@ public class MicToVokaturi : MonoBehaviour
 
 
         dynamic py = pyEngine.ExecuteFile(Application.dataPath + "/Vokaturi_Python/Python/Prueba.py");
-        vokaWrapper = py.vokaNetWrapper(Application.dataPath+ "/DLL/OpenVokaturi-3-0-win32.dll");
+        vokaWrapper = py.vokaNetWrapper(Application.dataPath+ "/DLL/OpenVokaturi-3-0-win64.dll");
 
         Debug.Log("Started recording");
         secs = Time.realtimeSinceStartup;
-        AudioClip c = Microphone.Start(Microphone.devices[0], false, 10, 44100);
+        c = Microphone.Start(Microphone.devices[0], false, 10, 44100);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((Time.realtimeSinceStartup - secs) > 11)
+        if ((Time.realtimeSinceStartup - secs) > 5)
         {
             Debug.Log("finished");
 
@@ -47,6 +47,7 @@ public class MicToVokaturi : MonoBehaviour
                 Debug.Log(result["Sad"]);
                 Debug.Log(result["Angry"]);
                 Debug.Log(result["Fear"]);
+                Debug.Log(result["Error"]);
                 
             }
             else
