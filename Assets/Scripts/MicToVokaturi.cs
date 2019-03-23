@@ -5,7 +5,8 @@ using IronPython;
 using IronPython.Hosting;
 using IronPython.Runtime;
 using Microsoft.Scripting.Hosting;
-
+using System.IO;
+using System;
 
 public class MicToVokaturi : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class MicToVokaturi : MonoBehaviour
     dynamic vokaWrapper;
     AudioClip c;
     double secs;
+    bool cs = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,35 +28,75 @@ public class MicToVokaturi : MonoBehaviour
         Debug.Log("Started recording");
         secs = Time.realtimeSinceStartup;
         c = Microphone.Start(Microphone.devices[0], false, 10, 44100);
+        Debug.Log("Recording from: " + Microphone.devices[0]);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((Time.realtimeSinceStartup - secs) > 5)
+        if ((Time.realtimeSinceStartup - secs) > 4)
         {
             Debug.Log("finished");
 
             float[] data = new float[c.channels * c.samples];
-            bool cool = c.GetData(data, 0);
+            List<string> dataS = new List<string>();
 
-            if (cool)
+            for (int i = 0; i < data.Length; i++)
+                dataS.Add(data[i].ToString());
+
+            bool success =  c.GetData(data, 0);
+
+            double[] doubleArray = Array.ConvertAll(data, x => (double)x);
+
+            if (!cs)
             {
-                Debug.Log("COolio");
-                dynamic result = vokaWrapper.vokalculate(data);
-                Debug.Log(result["Neutral"]);
-                Debug.Log(result["Happy"]);
-                Debug.Log(result["Sad"]);
-                Debug.Log(result["Angry"]);
-                Debug.Log(result["Fear"]);
-                Debug.Log(result["Error"]);
+                for(int i = 0; i < doubleArray.Length/4; i++)
+                {
+                    Debug.Log(doubleArray[i]);
+                }
+            }
+            
+            
+
+            if (success)
+            {
+                Debug.Log("Data copied");
+                dynamic result = vokaWrapper.vokalculate(doubleArray);
+
+                if (result["Success"])
+                {
+                    Debug.Log(result["Neutral"]);
+                    Debug.Log(result["Happy"]);
+                    Debug.Log(result["Sad"]);
+                    Debug.Log(result["Angry"]);
+                    Debug.Log(result["Fear"]);
+                    Debug.Log(result["Error"]);
+
+                }
+                else
+                {
+                    Debug.Log(result["Error"]);
+                }
                 
             }
             else
             {
                 Debug.Log("not coolio");
             }
+            c = Microphone.Start(Microphone.devices[0], false, 10, 44100);
+            secs = Time.realtimeSinceStartup;
         }
+    }
+    private double [] TestArray (int size)
+    {
+        var z = new double[size];
+
+        for(int i = 0; i < size; i++)
+        {
+            z[i] = Mathf.Sin(i);
+        }
+
+        return z;
     }
 
     private void setSearchPaths()

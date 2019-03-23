@@ -1,42 +1,33 @@
 import sys
 import Vokaturi
-
+import ctypes
 
 class vokaNetWrapper:
 	def __init__(self, DLLstring):
 		Vokaturi.load(DLLstring)
 
-	def vokalculate(self, floatArray):
+	def vokalculate(self, doubleArr):
 		samplerate = 44100
-		floatArray = [float (x) for x in floatArray]
+		error = "Starting"
+		buffer_size = len(doubleArr)
 
-		buffer_length = len(floatArray)
-		cbuff = Vokaturi.SampleArrayC(buffer_length)
 
-		#if floatArray.ndim == 1:  # mono
-		cbuff[:] = floatArray[:] / 32768.0
-		#else:  # stereo
-			#cbuff[:] = 0.5*(floatArray[:,0]+0.0+floatArray[:,1]) / 32768.0
-
-		voice = Vokaturi.Voice(samplerate, buffer_length)
-		voice.fill(buffer_length, cbuff)
+		c_buffer = Vokaturi.SampleArrayC(buffer_size)
+		c_buffer [:] = doubleArr[:]
+		
+		voice = Vokaturi.Voice (samplerate, buffer_size)
+		voice.fill(buffer_size, c_buffer)
 
 		quality = Vokaturi.Quality()
 		emotionProbabilities = Vokaturi.EmotionProbabilities()
 		voice.extract(quality, emotionProbabilities)
 
-		error = "Success"
-		if quality.valid:
-			print ("Neutral: %.3f" % emotionProbabilities.neutrality)
-			print ("Happy: %.3f" % emotionProbabilities.happiness)
-			print ("Sad: %.3f" % emotionProbabilities.sadness)
-			print ("Angry: %.3f" % emotionProbabilities.anger)
-			print ("Fear: %.3f" % emotionProbabilities.fear)
+		success = bool(quality.valid)
+
+		if(quality.valid):
+			error = error + "\n SUCCESS!"
 		else:
-			error = "Not enough sonorancy to determine emotions"
-
-		voice.destroy()
-
+			error = error + "\n Not enough sonorancy to determine emotions" 
 
 		return {
 		"Neutral": emotionProbabilities.neutrality,
@@ -44,5 +35,8 @@ class vokaNetWrapper:
 		"Sad": emotionProbabilities.sadness,
 		"Angry": emotionProbabilities.anger,
 		"Fear": emotionProbabilities.fear,
-		"Error": error
+		"Error": error,
+		"Success" : success
 		}
+
+
