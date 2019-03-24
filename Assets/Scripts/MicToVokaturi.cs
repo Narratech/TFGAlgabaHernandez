@@ -17,7 +17,7 @@ public class MicToVokaturi : MonoBehaviour
     AudioClip audioClip;
 
     double secs;
-    int CLIPLEN = 10;
+    int CLIPLEN = 30;
     int SAMPLERATE = 44100;
 
     public int selectedMic = 0;
@@ -70,9 +70,6 @@ public class MicToVokaturi : MonoBehaviour
                     Debug.Log("Anger: " + result["Angry"]);
                     Debug.Log("Fear: " + result["Fear"]);
                     Debug.Log("Error msg: "+ result["Error"]);
-
-
-
                 }
                 else
                 {
