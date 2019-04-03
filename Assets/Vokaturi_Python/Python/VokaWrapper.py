@@ -7,9 +7,10 @@ import Vokaturi
 import ctypes
 
 class vokaNetWrapper:
+
 	def __init__(self, DLLstring):
 		Vokaturi.load(DLLstring)
-
+		self.voice = []
 
 	def vokalculate(self, soundArr, samplerate):
 		'''
@@ -29,12 +30,12 @@ class vokaNetWrapper:
 		c_buffer = Vokaturi.SampleArrayC(buffer_size)
 		c_buffer [:] = soundArr[:]
 		
-		voice = Vokaturi.Voice (samplerate, buffer_size)
-		voice.fill(buffer_size, c_buffer)
+		self.voice = Vokaturi.Voice (samplerate, buffer_size)
+		self.voice.fill(buffer_size, c_buffer)
 
 		quality = Vokaturi.Quality()
 		emotionProbabilities = Vokaturi.EmotionProbabilities()
-		voice.extract(quality, emotionProbabilities)
+		self.voice.extract(quality, emotionProbabilities)
 
 		success = bool(quality.valid)
 
@@ -43,14 +44,13 @@ class vokaNetWrapper:
 		else:
 			error = error + "\n Not enough sonorancy to determine emotions" 
 
-		voice.destroy()
 		return {
-		"Neutral": emotionProbabilities.neutrality,
-		"Happy": emotionProbabilities.happiness,
-		"Sad": emotionProbabilities.sadness,
-		"Angry": emotionProbabilities.anger,
-		"Fear": emotionProbabilities.fear,
-		"Error": error,
-		"Success" : success
+			"Neutral": emotionProbabilities.neutrality,
+			"Happy": emotionProbabilities.happiness,
+			"Sad": emotionProbabilities.sadness,
+			"Angry": emotionProbabilities.anger,
+			"Fear": emotionProbabilities.fear,
+			"Error": error,
+			"Success" : success
 		}
 
