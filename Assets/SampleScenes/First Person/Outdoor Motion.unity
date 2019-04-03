@@ -2092,6 +2092,11 @@ PrefabInstance:
       propertyPath: m_InteractiveItem
       value: 
       objectReference: {fileID: 270096616}
+    - target: {fileID: 6239817920214386738, guid: 4d5bae0ac3b48714ba3331c4ee3f9b67,
+        type: 3}
+      propertyPath: GazeManager
+      value: 
+      objectReference: {fileID: 1430310944}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5bae0ac3b48714ba3331c4ee3f9b67, type: 3}
 --- !u!1001 &597973195
@@ -4999,6 +5004,11 @@ PrefabInstance:
       propertyPath: m_InteractiveItem
       value: 
       objectReference: {fileID: 770466559}
+    - target: {fileID: 6239817920214386738, guid: 4d5bae0ac3b48714ba3331c4ee3f9b67,
+        type: 3}
+      propertyPath: GazeManager
+      value: 
+      objectReference: {fileID: 1430310944}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5bae0ac3b48714ba3331c4ee3f9b67, type: 3}
 --- !u!4 &1122183421 stripped
@@ -6530,8 +6540,9 @@ GameObject:
   - component: {fileID: 1430310939}
   - component: {fileID: 1430310938}
   - component: {fileID: 1430310943}
+  - component: {fileID: 1430310944}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SaveData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6617,7 +6628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430310937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.845552, y: 13.021, z: 30.68432}
+  m_LocalPosition: {x: 29.845552, y: 13.33, z: 30.68432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6636,6 +6647,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   user: 0
+--- !u!114 &1430310944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430310937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ed7b99428a77bf4aad34e4d34524206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1436315800
 GameObject:
   m_ObjectHideFlags: 0
@@ -8700,6 +8723,11 @@ PrefabInstance:
       propertyPath: m_InteractiveItem
       value: 
       objectReference: {fileID: 267583663}
+    - target: {fileID: 6239817920214386738, guid: 4d5bae0ac3b48714ba3331c4ee3f9b67,
+        type: 3}
+      propertyPath: GazeManager
+      value: 
+      objectReference: {fileID: 1430310944}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5bae0ac3b48714ba3331c4ee3f9b67, type: 3}
 --- !u!4 &1992950517 stripped

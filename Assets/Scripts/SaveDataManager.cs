@@ -6,6 +6,8 @@ using System;
 
 public class SaveDataManager : MonoBehaviour
 {
+    public static SaveDataManager instance = null;
+
     [Serializable]
     class Data
     {
@@ -34,12 +36,16 @@ public class SaveDataManager : MonoBehaviour
         File.WriteAllText(Application.dataPath + "/" + "User" + user +"Type"+info+".json", json);
 
     }
+    public void Test()
+    {
+        Debug.Log("TEST");
+    }
+
 
         void Awake()
     {
-        Debug.Log("just testing");
-        float[] datos = new float[] { 2.0f, 3.4f,0 };
-        SaveData("testinnng", datos);
+        if (instance == null)
+            instance = this;
     }
 
 }

@@ -9,6 +9,7 @@ public class CharacterGaze : MonoBehaviour
     DataManager DT;
     public int player = 0;
     bool state = false;
+    public GazeManager GazeManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +45,7 @@ public class CharacterGaze : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (state) DT.frameLooking(player);
-        else DT.frameNotLooking(player);
+        if (state) GazeManager.frameLooking(player);
+        else GazeManager.frameNotLooking(player);
     }
 }

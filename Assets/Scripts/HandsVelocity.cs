@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HandsVelocity : MonoBehaviour
 {
+    DataManager DT;
     float velocityx;
     float velocityy;
     float positionx;
@@ -20,9 +21,15 @@ public class HandsVelocity : MonoBehaviour
     void Start()
     {
         velocityy = velocityx = positionx = positiony = lastx = lasty= 0;
+       
         Debug.Log("Hola");
         StartCoroutine("WriteData");
 
+    }
+    void Awake()
+    {
+            DT = DataManager.instance;
+        
     }
 
     // Update is called once per frame
@@ -35,7 +42,7 @@ public class HandsVelocity : MonoBehaviour
     {
         Debug.Log("Hola1");
 
-        for (int i = 0; i< 60; i++)//puentesito
+        for (int i = 0; i< 600; i++)//puentesito
         {
 
 
@@ -44,9 +51,11 @@ public class HandsVelocity : MonoBehaviour
 
             velocityx = (positionx - lastx) / refreshtime;
             velocityy = (positiony - lasty) / refreshtime;
-
-
-            Debug.Log(" ID : " + id + " " + "Velocity X " + velocityx + " Velocity Y " + velocityy);
+            if(id == 0)
+            DT.AddHandData("rigth", velocityx, velocityy);
+            else if( id == 1)
+            DT.AddHandData("left", velocityx, velocityy);
+            //Debug.Log(" ID : " + id + " " + "Velocity X " + velocityx + " Velocity Y " + velocityy);
             lastx = positionx;
             lasty = positiony;
             yield return new WaitForSeconds(refreshtime);

@@ -5,58 +5,101 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance = null;
+    SaveDataManager SD;
     float timer = 10.0f;
     bool finished = false;
+    bool started = true;
     public TextMesh contador;
     int characters = 0;
-    int[] frames;
-    float[] mirada;
 
+    //Characters
+    List<float> Gazes;
+
+    //Hands
+    List<float> Lhand;
+    List<float> Rhand;
+    
+    //Sound
+
+
+
+    //vokaturi
     void Awake()
     {
         if (instance == null)
             instance = this;
+       
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        frames = new int[] { 0,0,0 };
-        mirada = new float[] { 0.0f, 0.0f, 0.0f};
+        SD = SaveDataManager.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if(timer < 0)
+        if (started && !finished)
         {
-            finished = true;
-            contador.text = " " + mirada[0] * 100 / frames[0] + "%" + " " + mirada[1]*100/frames[1]+ "%" + " " + mirada[2] * 100 / frames[2] + "%";
+            timer -= Time.deltaTime;
+            if (timer < 0)
+            {
+                finished = true;
+                SD.Test();
+               
+                SD.SaveData("Gazes", Gazes.ToArray());
+                SD.SaveData("LeftHand", Lhand.ToArray());
+                SD.SaveData("RightHand", Lhand.ToArray());
+                //  contador.text = " " + mirada[0] * 100 / frames[0] + "%" + " " + mirada[1]*100/frames[1]+ "%" + " " + mirada[2] * 100 / frames[2] + "%";
+            }
+            else
+            {
+                contador.text = "" + timer;
+            }
+            //   Debug.Log(timer);
         }
-        else
-        {
-            contador.text = ""+timer;
-        }
-     //   Debug.Log(timer);
-        
     }
 
- 
+    //Gaze
 
-    public void frameLooking(int player)
+   public void addGaze( float a, float b, float c)
     {
-        if (!finished)
+        if (!finished && started)
         {
-            frames[player]++;
-            mirada[player] += 1.0f;
+            Gazes.Add(a);
+            Gazes.Add(b);
+            Gazes.Add(c);
         }
     }
-    public void frameNotLooking(int player)
+
+
+
+    //Hands
+    public void AddHandData(string hand,float x, float y)
     {
-        if (!finished)
+
+        if (!finished && started)
         {
-            frames[player]++;
+            if (hand.ToLower() == "rigth")
+            {
+                Rhand.Add(x);
+                Rhand.Add(y);
+            }
+            else
+            {
+                Lhand.Add(x);
+                Lhand.Add(y);
+
+            }
         }
     }
+
+
+    //Sound
+
+
+    //Vokaturi
+
+
 }
