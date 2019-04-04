@@ -35,7 +35,7 @@ public class DataCollectTest : MonoBehaviour
         var data = soundLoudness.GetData();
 
         string outp = "Vokaturi: \n";
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < datav.Length; i++)
         {
             outp += datav[i] + " ";
         }

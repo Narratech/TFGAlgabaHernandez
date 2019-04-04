@@ -15,15 +15,10 @@ public class MicToVokaturi : MonoBehaviour
     static ScriptEngine pyEngine = null;
     dynamic vokaWrapper;
 
-    public AudioClip audioClip = null;
+
 
     double actTime;
-    public int SampleRate = 44100;
-    public int ClipLength = 1;
-
-
-    public int selectedMic = 0;
-    private string activeMic;
+    public int ClipLength = 5;
     private bool collect = false;
     private int window = -1;
 
@@ -39,10 +34,7 @@ public class MicToVokaturi : MonoBehaviour
         dynamic py = pyEngine.ExecuteFile(Application.dataPath + "/Vokaturi_Python/Python/VokaWrapper.py");
         vokaWrapper = py.vokaNetWrapper(Application.dataPath+ "/DLL/OpenVokaturi-3-0-win64.dll");
 
-        activeMic = Microphone.devices[selectedMic];
-        Debug.Log("Selected microphone: " + activeMic);
-
-        window = ClipLength * SampleRate;
+        window = ClipLength * MicrophoneManager.SAMPLERATE;
 
 
     }
@@ -50,17 +42,12 @@ public class MicToVokaturi : MonoBehaviour
     {
         results = new List<float>();
         collect = true;
-
-        Debug.Log("Started recording");
-        audioClip = Microphone.Start(activeMic, true, 999, SampleRate);
         actTime = Time.realtimeSinceStartup;
-
     }
 
     public void StopCollecting()
     {
         collect = false;
-        if (Microphone.IsRecording(activeMic)) Microphone.End(activeMic);
     }
 
     public float[] GetData()
@@ -72,14 +59,13 @@ public class MicToVokaturi : MonoBehaviour
     void Update()
     {
         if (!collect) return;
-        if ((Time.realtimeSinceStartup - actTime) > ClipLength+1)
+        if ((Time.realtimeSinceStartup - actTime) > ClipLength)
         {
             //Get the data from the microphone
             float[] data = new float[window];
-            int micPosition = Microphone.GetPosition(activeMic);
-            int position = Microphone.GetPosition(activeMic) - (window + 1);
 
-            bool success =  audioClip.GetData(data, position);
+            int position = MicrophoneManager.GetMicrophonePosition() - (window + 1);
+            bool success =  MicrophoneManager.AudioClip.GetData(data, position);
 
             float z = data[0];
             //Parse it to double so python can use it
@@ -88,7 +74,7 @@ public class MicToVokaturi : MonoBehaviour
             if (success)
             {
                 Debug.Log("Data copied");
-                dynamic result = vokaWrapper.vokalculate(doubleArray, SampleRate);
+                dynamic result = vokaWrapper.vokalculate(doubleArray, MicrophoneManager.SAMPLERATE);
 
                 if (result["Success"])
                 {

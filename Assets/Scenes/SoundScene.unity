@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 172244625}
   - component: {fileID: 172244626}
   - component: {fileID: 172244627}
+  - component: {fileID: 172244628}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -443,10 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3176d6c2004ca5a42819923760847bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
-  SampleRate: 44100
   ClipLength: 5
-  selectedMic: 0
 --- !u!114 &172244626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MicToVokaturi: {fileID: 172244625}
-  soundLoudness: {fileID: 0}
+  soundLoudness: {fileID: 172244627}
 --- !u!114 &172244627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +469,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d569d55fcc4469439f8687477530e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &172244628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172244618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d59780e413ed124989fabe0bff1ded2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &280603336
