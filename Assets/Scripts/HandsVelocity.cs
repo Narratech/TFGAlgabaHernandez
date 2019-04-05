@@ -40,19 +40,19 @@ public class HandsVelocity : MonoBehaviour
 
     IEnumerator WriteData()
     {
-        Debug.Log("Hola1");
+
 
         for (int i = 0; i< 600; i++)//puentesito
         {
 
-
+            Debug.Log("Hola1 12311qw");
             positionx = transform.position.x;
             positiony = transform.position.y;
 
             velocityx = (positionx - lastx) / refreshtime;
             velocityy = (positiony - lasty) / refreshtime;
             if(id == 0)
-            DT.AddHandData("rigth", velocityx, velocityy);
+            DT.AddHandData("right", velocityx, velocityy);
             else if( id == 1)
             DT.AddHandData("left", velocityx, velocityy);
             //Debug.Log(" ID : " + id + " " + "Velocity X " + velocityx + " Velocity Y " + velocityy);

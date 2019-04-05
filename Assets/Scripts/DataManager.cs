@@ -28,7 +28,10 @@ public class DataManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-       
+        Gazes = new List<float>();
+        Lhand = new List<float>();
+        Rhand = new List<float>();
+
     }
 
     // Start is called before the first frame update
@@ -47,10 +50,10 @@ public class DataManager : MonoBehaviour
             {
                 finished = true;
                 SD.Test();
-               
-                SD.SaveData("Gazes", Gazes.ToArray());
-                SD.SaveData("LeftHand", Lhand.ToArray());
-                SD.SaveData("RightHand", Lhand.ToArray());
+               // float[] aux = new float[7];
+                SD.SaveData("Gazes", Gazes);
+                SD.SaveData("LeftHand", Lhand);
+                SD.SaveData("RightHand", Rhand);
                 //  contador.text = " " + mirada[0] * 100 / frames[0] + "%" + " " + mirada[1]*100/frames[1]+ "%" + " " + mirada[2] * 100 / frames[2] + "%";
             }
             else
@@ -67,6 +70,7 @@ public class DataManager : MonoBehaviour
     {
         if (!finished && started)
         {
+            Debug.Log("Adding gaze");
             Gazes.Add(a);
             Gazes.Add(b);
             Gazes.Add(c);
@@ -78,10 +82,11 @@ public class DataManager : MonoBehaviour
     //Hands
     public void AddHandData(string hand,float x, float y)
     {
+        Debug.Log("ADddingHand");
 
         if (!finished && started)
         {
-            if (hand.ToLower() == "rigth")
+            if (hand.ToLower() == "right")
             {
                 Rhand.Add(x);
                 Rhand.Add(y);

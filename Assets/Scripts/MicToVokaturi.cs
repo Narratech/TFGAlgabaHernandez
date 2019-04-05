@@ -32,7 +32,7 @@ public class MicToVokaturi : MonoBehaviour
 
 
         dynamic py = pyEngine.ExecuteFile(Application.dataPath + "/Vokaturi_Python/Python/VokaWrapper.py");
-        vokaWrapper = py.vokaNetWrapper(Application.dataPath+ "/DLL/OpenVokaturi-3-0-win64.dll");
+        vokaWrapper = null;// py.vokaNetWrapper(Application.dataPath+ "/DLL/OpenVokaturi-3-0-win64.dll");
 
         window = ClipLength * MicrophoneManager.SAMPLERATE;
 
@@ -74,7 +74,7 @@ public class MicToVokaturi : MonoBehaviour
             if (success)
             {
                 Debug.Log("Data copied");
-                dynamic result = vokaWrapper.vokalculate(doubleArray, MicrophoneManager.SAMPLERATE);
+                dynamic result = null; //;vokaWrapper.vokalculate(doubleArray, MicrophoneManager.SAMPLERATE);
 
                 if (result["Success"])
                 {

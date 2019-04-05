@@ -15,6 +15,7 @@ public class GazeManager : MonoBehaviour
         DT = DataManager.instance;
         frames = new int[] { 0, 0, 0 };
         mirada = new float[] { 0.0f, 0.0f, 0.0f };
+        StartCoroutine("WriteData");
 
     }
 
@@ -31,7 +32,7 @@ public class GazeManager : MonoBehaviour
             DT.addGaze(mirada[0] * 100 / frames[0], mirada[1] * 100 / frames[1], mirada[2] * 100 / frames[2]);
             //reseting to take new percentajes
             frames[0] = frames[1] = frames[2] = 0;
-            mirada[0] = mirada[2] = mirada[3] = 0;
+            mirada[0] = mirada[1] = mirada[2] = 0;
             //Debug.Log(" ID : " + id + " " + "Velocity X " + velocityx + " Velocity Y " + velocityy);
             yield return new WaitForSeconds(refreshtime);
 
