@@ -21,11 +21,11 @@ public class DataManager : MonoBehaviour
     List<float> Rhand;
 
     //Sound
-
+    List<float> Sound;
 
 
     //vokaturi
-
+    List<float> Vokaturi;
     //Preguntas
     List<float> Answers;
     void Awake()
@@ -36,6 +36,8 @@ public class DataManager : MonoBehaviour
         Lhand = new List<float>();
         Rhand = new List<float>();
         Answers = new List<float>();
+        Sound = new List<float>();
+        Vokaturi = new List<float>();
 
     }
 
@@ -108,9 +110,28 @@ public class DataManager : MonoBehaviour
 
 
     //Sound
-
+    public void AddSound(float x)
+    {
+        if (!finished && started)
+        {
+            Sound.Add(x);
+        }
+    }
 
     //Vokaturi
+    public void AddVokaturi(float a,float b,float c,float d,float e,float f)
+    {
+        if (!finished && started)
+        {
+
+            Vokaturi.Add(a);
+            Vokaturi.Add(b);
+            Vokaturi.Add(c);
+            Vokaturi.Add(d);
+            Vokaturi.Add(e);
+            Vokaturi.Add(f);
+        }
+    }
 
     //Preguntas
     public void AddAnswer(int x)
