@@ -61,6 +61,8 @@ public class DataManager : MonoBehaviour
                 SD.SaveData("Gazes", Gazes);
                 SD.SaveData("LeftHand", Lhand);
                 SD.SaveData("RightHand", Rhand);
+                SD.SaveData("Vokaturi", Vokaturi);
+                SD.SaveData("SoundLoudness", Sound);
                 Preguntas.SetActive(true);
                 //  contador.text = " " + mirada[0] * 100 / frames[0] + "%" + " " + mirada[1]*100/frames[1]+ "%" + " " + mirada[2] * 100 / frames[2] + "%";
             }
@@ -123,7 +125,7 @@ public class DataManager : MonoBehaviour
     {
         if (!finished && started)
         {
-
+            Debug.Log("VOkaturi added");
             Vokaturi.Add(neutral);
             Vokaturi.Add(happy);
             Vokaturi.Add(sad);
