@@ -5,6 +5,7 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance = null;
+    public GameObject Preguntas;
     SaveDataManager SD;
     float timer = 10.0f;
     bool finished = false;
@@ -18,12 +19,15 @@ public class DataManager : MonoBehaviour
     //Hands
     List<float> Lhand;
     List<float> Rhand;
-    
+
     //Sound
 
 
 
     //vokaturi
+
+    //Preguntas
+    List<float> Answers;
     void Awake()
     {
         if (instance == null)
@@ -31,6 +35,7 @@ public class DataManager : MonoBehaviour
         Gazes = new List<float>();
         Lhand = new List<float>();
         Rhand = new List<float>();
+        Answers = new List<float>();
 
     }
 
@@ -54,6 +59,7 @@ public class DataManager : MonoBehaviour
                 SD.SaveData("Gazes", Gazes);
                 SD.SaveData("LeftHand", Lhand);
                 SD.SaveData("RightHand", Rhand);
+                Preguntas.SetActive(true);
                 //  contador.text = " " + mirada[0] * 100 / frames[0] + "%" + " " + mirada[1]*100/frames[1]+ "%" + " " + mirada[2] * 100 / frames[2] + "%";
             }
             else
@@ -106,5 +112,14 @@ public class DataManager : MonoBehaviour
 
     //Vokaturi
 
+    //Preguntas
+    public void AddAnswer(int x)
+    {
+        Answers.Add((float)x);
+    }
+    public void SaveAnswers()
+    {
+        SD.SaveData("Answers", Answers);
+    }
 
 }

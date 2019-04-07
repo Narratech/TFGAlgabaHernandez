@@ -1,17 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PRCS : MonoBehaviour
 {
+    public DataManager DT;
     string[] questions;
     int position = 0;
     int[] answers;
 
-    int active = 0;
+    int active = 1;
     float lastA = 0;
 
     float time;
+
+    public Text Answer;
+    public Text Question;
+    public Text Numero;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,26 +45,28 @@ public class PRCS : MonoBehaviour
     void Update()
     {
         float aux = Input.GetAxis("Horizontal");
-        if (OVRInput.GetDown(OVRInput.Button.One))
-        {
-            addAnswer(active);
-        }
+       
 
         if (time > 0) time -= Time.deltaTime;
         else
         {
-            if (aux > 0.3f)
+            if(Input.GetAxis("Vertical")< -0.1f || Input.GetKey(KeyCode.KeypadEnter))
+            {
+                time += 0.3f;
+                addAnswer(active);
+            }
+            else if (aux > 0.3f)
             {
                 active++;
                 time += 0.3f;
-                if (active == 6) active = 0;
+                if (active == 7) active = 1;
             }
             else if (aux < -0.3f)
                 active--;
             time += 0.3f;
 
 
-            if (active == -1) active = 5;
+            if (active == 0) active = 6;
 
         }
     
@@ -67,16 +77,20 @@ public class PRCS : MonoBehaviour
     }
     public void DrawData()
     {
-        Debug.Log(questions[position]);
-        Debug.Log(active);
+        Answer.text = active.ToString();
+        Question.text = questions[position];
+        Numero.text = "Pregunta " + (position +1) ;
 
-    
+
+       //  Debug.Log(active);
     }
 
     public void addAnswer(int number)
     {
+        
         answers[position] = number;
         position++;
+        DT.AddAnswer(number);
 
         if(position >= 12)
         {
@@ -86,6 +100,7 @@ public class PRCS : MonoBehaviour
     }
     void finish()
     {
+        DT.SaveAnswers();
         Debug.Log("Finished questiosns");
     }
 

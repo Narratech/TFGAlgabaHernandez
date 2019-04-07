@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandsVelocity : MonoBehaviour
 {
-    DataManager DT;
+    public DataManager DT;
     float velocityx;
     float velocityy;
     float positionx;
@@ -28,7 +28,7 @@ public class HandsVelocity : MonoBehaviour
     }
     void Awake()
     {
-            DT = DataManager.instance;
+            
         
     }
 
