@@ -119,17 +119,16 @@ public class DataManager : MonoBehaviour
     }
 
     //Vokaturi
-    public void AddVokaturi(float a,float b,float c,float d,float e,float f)
+    public void AddVokaturi(float neutral,float happy,float sad,float angry,float fear)
     {
         if (!finished && started)
         {
 
-            Vokaturi.Add(a);
-            Vokaturi.Add(b);
-            Vokaturi.Add(c);
-            Vokaturi.Add(d);
-            Vokaturi.Add(e);
-            Vokaturi.Add(f);
+            Vokaturi.Add(neutral);
+            Vokaturi.Add(happy);
+            Vokaturi.Add(sad);
+            Vokaturi.Add(angry);
+            Vokaturi.Add(fear);
         }
     }
 

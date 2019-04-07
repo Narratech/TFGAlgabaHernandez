@@ -22,17 +22,17 @@ public class DataCollectTest : MonoBehaviour
     }
     public void startCollecting()
     {
-        MicToVokaturi.StartCollecting();
-        soundLoudness.StartCollecting();
+      //  MicToVokaturi.StartCollecting();
+      //  soundLoudness.StartCollecting();
 
     }
     public void stopCollecting()
-    {
-        MicToVokaturi.StopCollecting();
-        var datav = MicToVokaturi.GetData();
+    {/*
+      //  MicToVokaturi.StopCollecting();
+      //  var datav = MicToVokaturi.GetData();
 
-        soundLoudness.StopCollecting();
-        var data = soundLoudness.GetData();
+       // soundLoudness.StopCollecting();
+      // var data = soundLoudness.GetData();
 
         string outp = "Vokaturi: \n";
         for(int i = 0; i < datav.Length; i++)
@@ -44,6 +44,6 @@ public class DataCollectTest : MonoBehaviour
         {
             outp += data[i] + " ";
         }
-        Debug.Log(outp);
+        Debug.Log(outp);*/
     }
 }

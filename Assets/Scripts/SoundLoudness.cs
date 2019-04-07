@@ -16,13 +16,13 @@ public class SoundLoudness : MonoBehaviour
 
     //mic initialization
 
-    public void StartCollecting()
+    void Start()
     {
         results = new List<float>();
         collect = true;
         actTime = Time.realtimeSinceStartup;
     }
-    public void StopCollecting()
+    void OnDisable()
     {
         collect = false;
         
@@ -58,6 +58,7 @@ public class SoundLoudness : MonoBehaviour
         {
             aux = LevelMax();
             results.Add(aux);
+            DataManager.instance.AddSound(aux);
         }
     }
 }

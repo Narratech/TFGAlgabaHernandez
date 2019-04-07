@@ -36,7 +36,7 @@ public class MicToVokaturi : MonoBehaviour
 
         window = ClipLength * MicrophoneManager.SAMPLERATE;
 
-
+        StartCollecting();
     }
     public void StartCollecting()
     {
@@ -98,6 +98,13 @@ public class MicToVokaturi : MonoBehaviour
                     results.Add(angry);
                     results.Add(fear);
 
+                    DataManager.instance.AddVokaturi(
+                        neutral,
+                        happy,
+                        sad,
+                        angry,
+                        fear);
+
                 }
                 else
                 {
@@ -107,6 +114,7 @@ public class MicToVokaturi : MonoBehaviour
                     results.Add(-1);
                     results.Add(-1);
                     results.Add(-1);
+                    DataManager.instance.AddVokaturi(-1, -1, -1, -1, -1);
                     Debug.Log(result["Error"]);
                 }
             }
@@ -118,6 +126,7 @@ public class MicToVokaturi : MonoBehaviour
                 results.Add(-1);
                 results.Add(-1);
                 results.Add(-1);
+                DataManager.instance.AddVokaturi(-1, -1, -1, -1, -1);
             }
             actTime = Time.realtimeSinceStartup;
         }

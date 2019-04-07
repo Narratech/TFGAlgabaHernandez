@@ -9,7 +9,7 @@ public class MicrophoneManager : MonoBehaviour
 
     public static AudioClip AudioClip { get => _audioClip; set => _audioClip = value; }
     public static int SAMPLERATE = 88200;
-    public static int deviceNumber = 0;
+    public int deviceNumber = 0;
  
     private void OnEnable()
     {
