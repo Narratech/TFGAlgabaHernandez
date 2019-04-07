@@ -35,7 +35,7 @@ public class SaveDataManager : MonoBehaviour
         string json = JsonUtility.ToJson(aux);
         Debug.Log("escribiendo");
   
-        File.WriteAllText(Application.dataPath + "/" + "User" + user +"Type"+info+".json", json);
+        File.WriteAllText(Application.dataPath + "/RecordedData/" + "User" + user +"Type"+info+".json", json);
 
     }
     public void Test()
