@@ -7,7 +7,7 @@ public class DataManager : MonoBehaviour
     public static DataManager instance = null;
     public GameObject Preguntas;
     SaveDataManager SD;
-    float timer = 10.0f;
+    float timer = 15.0f;
     bool finished = false;
     bool started = true;
     public TextMesh contador;
@@ -61,6 +61,8 @@ public class DataManager : MonoBehaviour
                 SD.SaveData("Gazes", Gazes);
                 SD.SaveData("LeftHand", Lhand);
                 SD.SaveData("RightHand", Rhand);
+                SD.SaveData("Sound", Sound);
+                SD.SaveData("Vokaturi", Vokaturi);
                 Preguntas.SetActive(true);
                 //  contador.text = " " + mirada[0] * 100 / frames[0] + "%" + " " + mirada[1]*100/frames[1]+ "%" + " " + mirada[2] * 100 / frames[2] + "%";
             }
