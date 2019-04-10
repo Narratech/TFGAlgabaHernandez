@@ -8,7 +8,7 @@ public class SoundLoudness : MonoBehaviour
     public static float step = 0.5f;
 
 
-    int _sampleWindow = 128;
+    int _sampleWindow = 1024;
     private List<float> results;
     private bool collect = false;
 
@@ -31,23 +31,30 @@ public class SoundLoudness : MonoBehaviour
     {
         return results.ToArray();
     }
-    float LevelMax()
+    /// <summary>
+    /// Obtiene el valor medio cuadrático de 1024 muestras obtenidas en el instante.
+    /// Con ese valor, calcula el valor en decibelios de la muestra. 
+    /// </summary>
+    /// <returns>Valor en decibelios del micrófono.</returns>
+    float getLoudness()
     {
-        float levelMax = -100;
+
         float[] waveData = new float[_sampleWindow];
         int micPosition = MicrophoneManager.GetMicrophonePosition() - (_sampleWindow + 1); // null means the first microphone
         if (micPosition < 0) return 0;
         MicrophoneManager.AudioClip.GetData(waveData, micPosition);
-        // Getting a peak on the last 128 samples
+
+        //Root Mean Square value calculation
+        float rmsvalue = 0.0f;
         for (int i = 0; i < _sampleWindow; i++)
         {
-            float wavePeak = waveData[i] * waveData[i];
-            if (levelMax < wavePeak)
-            {
-                levelMax = wavePeak;
-            }
+           rmsvalue += waveData[i] * waveData[i];
         }
-        return levelMax;
+        rmsvalue = Mathf.Sqrt(rmsvalue / _sampleWindow);
+
+        float decibels = 20 * Mathf.Log10(rmsvalue / 0.01f);
+
+        return rmsvalue;
     }
 
     void Update()
@@ -56,9 +63,10 @@ public class SoundLoudness : MonoBehaviour
         float aux = -100f;
         if (Time.realtimeSinceStartup - actTime > step)
         {
-            aux = LevelMax();
+            aux = getLoudness();
             results.Add(aux);
-            DataManager.instance.AddSound(aux);
+            Debug.Log(aux);
+            if(DataManager.instance != null)DataManager.instance.AddSound(aux);
         }
     }
 }
