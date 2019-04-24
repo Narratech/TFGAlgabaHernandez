@@ -9,7 +9,7 @@ public class DataManager : MonoBehaviour
     SaveDataManager SD;
     float timer = 15.0f;
     bool finished = false;
-    bool started = true;
+    bool started = false;
     public TextMesh contador;
     int characters = 0;
 
@@ -47,6 +47,11 @@ public class DataManager : MonoBehaviour
         SD = SaveDataManager.instance;
     }
 
+    public void setStart(bool  aux)
+    {
+        started = aux;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -79,7 +84,7 @@ public class DataManager : MonoBehaviour
     {
         if (!finished && started)
         {
-            Debug.Log("Adding gaze");
+           // Debug.Log("Adding gaze");
             Gazes.Add(a);
             Gazes.Add(b);
             Gazes.Add(c);
@@ -91,7 +96,7 @@ public class DataManager : MonoBehaviour
     //Hands
     public void AddHandData(string hand,float x, float y)
     {
-        Debug.Log("ADddingHand");
+      //  Debug.Log("ADddingHand");
 
         if (!finished && started)
         {

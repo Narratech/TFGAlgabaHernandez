@@ -33,14 +33,14 @@ public class SaveDataManager : MonoBehaviour
         aux.data = new List<float>(datos);
 
         string json = JsonUtility.ToJson(aux);
-        Debug.Log("escribiendo");
+      //  Debug.Log("escribiendo");
   
         File.WriteAllText(Application.dataPath + "/RecordedData/" + "User" + user +"Type"+info+".json", json);
 
     }
     public void Test()
     {
-        Debug.Log("TEST");
+        //Debug.Log("TEST");
     }
 
 

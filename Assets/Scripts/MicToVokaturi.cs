@@ -73,17 +73,17 @@ public class MicToVokaturi : MonoBehaviour
 
             if (success)
             {
-                Debug.Log("Data copied");
+              //  Debug.Log("Data copied");
                 dynamic result = vokaWrapper.vokalculate(doubleArray, MicrophoneManager.SAMPLERATE);
 
                 if (result["Success"])
                 {
-                    Debug.Log("Neutrality: "+result["Neutral"]);
-                    Debug.Log("Happiness: " + result["Happy"]);
-                    Debug.Log("Sadness: " + result["Sad"]);
-                    Debug.Log("Anger: " + result["Angry"]);
-                    Debug.Log("Fear: " + result["Fear"]);
-                    Debug.Log("Error msg: "+ result["Error"]);
+                    //Debug.Log("Neutrality: "+result["Neutral"]);
+                    //Debug.Log("Happiness: " + result["Happy"]);
+                    //Debug.Log("Sadness: " + result["Sad"]);
+                    //Debug.Log("Anger: " + result["Angry"]);
+                    //Debug.Log("Fear: " + result["Fear"]);
+                    //Debug.Log("Error msg: "+ result["Error"]);
 
                     float neutral = (float)result["Neutral"];
                     float happy = (float)result["Happy"];
@@ -115,12 +115,12 @@ public class MicToVokaturi : MonoBehaviour
                     results.Add(-1);
                     results.Add(-1);
                     DataManager.instance.AddVokaturi(-1, -1, -1, -1, -1);
-                    Debug.Log(result["Error"]);
+                   // Debug.Log(result["Error"]);
                 }
             }
             else
             {
-                Debug.Log("Something went wrong while copying the data ");
+                //Debug.Log("Something went wrong while copying the data ");
                 results.Add(-1);
                 results.Add(-1);
                 results.Add(-1);
