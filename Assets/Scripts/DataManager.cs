@@ -69,6 +69,8 @@ public class DataManager : MonoBehaviour
                 SD.SaveData("Sound", Sound);
                 SD.SaveData("Vokaturi", Vokaturi);
                 //  contador.text = " " + mirada[0] * 100 / frames[0] + "%" + " " + mirada[1]*100/frames[1]+ "%" + " " + mirada[2] * 100 / frames[2] + "%";
+                //Call the pcrps questions
+                Preguntas.SetActive(true);
             }
             else
             {
