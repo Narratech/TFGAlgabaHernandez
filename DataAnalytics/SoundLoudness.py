@@ -18,7 +18,7 @@ def DrawSoundLoudness(floatArray, interval):
     media = np.mean(floatArray)
     mediana = np.median(floatArray)
     coeficiente_variacion = desviacion/media
-    print("El coeficiente de variacion fué: ", (coeficiente_variacion*100), '%')
+    #print("El coeficiente de variacion fué: ", (coeficiente_variacion*100), '%')
 
     fig = plt.figure()
     plt.plot(steps, floatArray, '-')

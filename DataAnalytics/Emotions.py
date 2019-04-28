@@ -17,9 +17,9 @@ def DrawEmotions(vokaArr):
             j = j+1
         i = i +5
 
-    plt.figure()
+    fig = plt.figure()
     plt.bar([0,1,2,3,4,5], emotions, 0.9)
-    plt.savefig("Emotionality")
+    return fig
 
 
 

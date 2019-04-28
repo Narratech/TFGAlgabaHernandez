@@ -2,27 +2,53 @@ import numpy as np
 import json
 import SoundLoudness
 import Emotions
+import HandAnalytics
+import GazeAnalytics
 import os
-dataDir = './Data/'
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+
+
+dataDir = '../Assets/RecordedData/'
 
 i = 0
 step = 0.1
 
-direc = dataDir+'User'+str(i)+'TypeSoundLoudness.json'
-while(os.path.exists(direc)):
-    with open(direc) as json_file:
-        jso = json.load(json_file)
-        floatArr = np.array(jso['data'])
-    
-    fig = SoundLoudness.DrawSoundLoudness(floatArr, step)
-    fig.savefig('SoundLoudness'+ str(i))
-    i = i+1
-    direc = dataDir+'User'+str(i)+'TypeSoundLoudness.json'
-     
+soundArray = []
+vokaturiArr = []
 
-with open(dataDir + 'User1TypeVokaturi.json') as voka_json:
-    jso = json.load(voka_json)
-    vokaturiArr = np.array(jso['data'])
+for filename in os.listdir(dataDir):
+    if(filename.endswith('.json')):
+        fileN = filename.split('.')[0] 
+        with open(dataDir+filename) as json_file:
+            jso = json.load(json_file)
+            if('info' not in jso): 
+                print("A")
+            dataType = jso['info']
+            fig = None
+            if(dataType ==  'Sound'):
+                soundArray = np.array(jso['data'])
+                fig = SoundLoudness.DrawSoundLoudness(soundArray, step)
+
+            elif (dataType ==  'Vokaturi'):
+                vokaturiArr = np.array(jso['data'])
+                fig = Emotions.DrawEmotions(vokaturiArr)     
+
+            elif (dataType == 'LeftHand' or dataType == 'RightHand'):
+                dataArray = np.array(jso['data'])
+                fig = HandAnalytics.DrawHandAnalytics(dataArray, step)
+
+            elif (dataType == 'Gazes'):
+                dataArray = np.array(jso['data'])
+                fig = GazeAnalytics.DrawGazeAnalytics(dataArray,step)
+
+            else:
+                dataArray = np.array(jso['data'])
+                fig = SoundLoudness.DrawSoundLoudness(soundArray, step)
+
+            if(fig is not None):
+                fig.suptitle(fileN)
+                fig.savefig('./Images/'+fileN+ '_chart')
+                plt.close(fig)
 
 
-Emotions.DrawEmotions(vokaturiArr)
