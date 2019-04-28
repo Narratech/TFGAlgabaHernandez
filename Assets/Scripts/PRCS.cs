@@ -15,9 +15,9 @@ public class PRCS : MonoBehaviour
 
     float time;
 
-    public Text Answer;
-    public Text Question;
-    public Text Numero;
+    public TextMesh Answer;
+    public TextMesh Question;
+    public TextMesh Numero;
 
 
 

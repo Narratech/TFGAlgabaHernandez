@@ -65,7 +65,7 @@ public class SoundLoudness : MonoBehaviour
         {
             aux = getLoudness();
             results.Add(aux);
-            Debug.Log(aux);
+           // Debug.Log(aux);
             if(DataManager.instance != null)DataManager.instance.AddSound(aux);
         }
     }

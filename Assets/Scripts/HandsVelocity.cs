@@ -22,7 +22,7 @@ public class HandsVelocity : MonoBehaviour
     {
         velocityy = velocityx = positionx = positiony = lastx = lasty= 0;
        
-        Debug.Log("Hola");
+      //  Debug.Log("Hola");
         StartCoroutine("WriteData");
 
     }
@@ -45,7 +45,7 @@ public class HandsVelocity : MonoBehaviour
         for (int i = 0; i< 600; i++)//puentesito
         {
 
-            Debug.Log("Hola1 12311qw");
+          ///  Debug.Log("Hola1 12311qw");
             positionx = transform.position.x;
             positiony = transform.position.y;
 
