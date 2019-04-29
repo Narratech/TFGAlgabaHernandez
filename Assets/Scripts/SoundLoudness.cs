@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundLoudness : MonoBehaviour
 {
 
-    public static float step = 0.1f;
+    public static float step = 0.05f;
 
 
     int _sampleWindow = 1024;
@@ -68,7 +68,6 @@ public class SoundLoudness : MonoBehaviour
         float aux = -100f;
         if (Time.realtimeSinceStartup - actTime > step)
         {
-            Debug.Log(Time.realtimeSinceStartup - actTime);
             aux = getLoudness();
             results.Add(aux);
            // Debug.Log(aux);

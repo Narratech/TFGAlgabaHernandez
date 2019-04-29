@@ -2,7 +2,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 
-THRESHOLD = 0.00095
+THRESHOLD = 0.001
 def DrawSoundLoudness(floatArray, interval):
     steps = np.zeros(len(floatArray))
     i = 0
@@ -11,7 +11,7 @@ def DrawSoundLoudness(floatArray, interval):
     for z in range(len(floatArray)):
         if(i > 0):
             steps[i] = steps[i-1]+ interval
-            if(floatArray[i] < THRESHOLD and floatArray[i-1] < THRESHOLD):
+            if(floatArray[i] < THRESHOLD):
                 silenceSteps.append(steps[i-1] + interval)
                 silence.append(floatArray[i])
         i = i +1
@@ -34,6 +34,7 @@ def DrawSoundLoudness(floatArray, interval):
 
     plt.ylabel('Valor medio cuadrático de sonido para el instante de tiempo')
     plt.xlabel('Tiempo')
+    plt.legend()
     plt.figtext(.5,.9,'Tiempo de silencio: ' + str(tiempoSilencio), fontsize=18, ha='center')
     return fig
 
