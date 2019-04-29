@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class MicrophoneManager : MonoBehaviour
 {
-    private static AudioClip _audioClip;
+    private static AudioClip audioClip;
     private static string _device;
 
-    public static AudioClip AudioClip { get => _audioClip; set => _audioClip = value; }
+
     public static int SAMPLERATE = 88200;
     public int deviceNumber = 0;
- 
+
+    public static AudioClip AudioClip
+    {
+        get
+        {
+            return audioClip;
+        }
+
+        set
+        {
+            audioClip = value;
+        }
+    }
+
     private void OnEnable()
     {
         InitMic();
@@ -27,7 +40,7 @@ public class MicrophoneManager : MonoBehaviour
     void InitMic()
     {
         if (_device == null) _device = Microphone.devices[deviceNumber];
-       _audioClip = Microphone.Start(_device, true, 999, SAMPLERATE);
+       AudioClip = Microphone.Start(_device, true, 999, SAMPLERATE);
     }
     void StopMic()
     {

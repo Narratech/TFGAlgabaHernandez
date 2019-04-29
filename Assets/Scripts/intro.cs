@@ -29,6 +29,10 @@ public class intro : MonoBehaviour
             }
             if(contador < frases.Length)
                 text.text = frases[contador];
+            else
+            {
+
+            }
         }
     }
     void Finish()

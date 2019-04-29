@@ -123,6 +123,7 @@ public class DataManager : MonoBehaviour
         if (!finished && started)
         {
             Sound.Add(x);
+            Debug.Log("added!");
         }
     }
 

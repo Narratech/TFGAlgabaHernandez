@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundLoudness : MonoBehaviour
 {
 
-    public static float step = 0.5f;
+    public static float step = 0.1f;
 
 
     int _sampleWindow = 1024;
@@ -19,8 +19,13 @@ public class SoundLoudness : MonoBehaviour
     void Start()
     {
         results = new List<float>();
-        collect = true;
+        collect = false;
         actTime = Time.realtimeSinceStartup;
+        startCollecting();
+    }
+    void startCollecting()
+    {
+        collect = true;
     }
     void OnDisable()
     {
@@ -63,10 +68,12 @@ public class SoundLoudness : MonoBehaviour
         float aux = -100f;
         if (Time.realtimeSinceStartup - actTime > step)
         {
+            Debug.Log(Time.realtimeSinceStartup - actTime);
             aux = getLoudness();
             results.Add(aux);
            // Debug.Log(aux);
             if(DataManager.instance != null)DataManager.instance.AddSound(aux);
+            actTime = Time.realtimeSinceStartup;
         }
     }
 }
