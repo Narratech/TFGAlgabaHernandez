@@ -28,7 +28,7 @@ for filename in os.listdir(dataDir):
             fig = None
             if(dataType ==  'Sound'):
                 soundArray = np.array(jso['data'])
-                fig = SoundLoudness.DrawSoundLoudness(soundArray, step)
+                fig = SoundLoudness.DrawSoundLoudness(soundArray, 0.5)
 
             elif (dataType ==  'Vokaturi'):
                 vokaturiArr = np.array(jso['data'])

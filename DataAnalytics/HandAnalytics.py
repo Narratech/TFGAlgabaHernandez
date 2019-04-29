@@ -39,17 +39,17 @@ def DrawHandAnalytics(floatArray, interval):
 
 
     plt.plot(steps, [desviacionX for x in steps], '-', label = "desviavion tipica X", color = 'red')
-    plt.plot(steps, [mediaX for x in steps], '-', label = 'media X', color= 'green')
+    plt.plot(steps, [mediaX for x in steps], '-', label = 'media X', color= 'brown')
     plt.plot(steps, [medianaX for x in steps], '-', label = 'mediana X', color = 'orange')
 
-    plt.plot(steps, [desviacionY for x in steps], '-', label = "desviavion tipica Y", color = 'red')
-    plt.plot(steps, [mediaY for x in steps], '-', label = 'media Y', color= 'green')
-    plt.plot(steps, [medianaY for x in steps], '-', label = 'mediana Y', color = 'orange')
+    plt.plot(steps, [desviacionY for x in steps], '-', label = "desviavion tipica Y", color = 'yellow')
+    plt.plot(steps, [mediaY for x in steps], '-', label = 'media Y', color= 'pink')
+    plt.plot(steps, [medianaY for x in steps], '-', label = 'mediana Y', color = 'purple')
 
 
     plt.ylabel('Valor de la mano por coordenada')
-    plt.legend()
 
+    plt.legend()
     return fig
 
 
