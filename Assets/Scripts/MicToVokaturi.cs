@@ -35,7 +35,6 @@ public class MicToVokaturi : MonoBehaviour
         vokaWrapper =  py.vokaNetWrapper(Application.dataPath+ "/DLL/OpenVokaturi-3-0-win64.dll");
 
         window = ClipLength * MicrophoneManager.SAMPLERATE;
-
         StartCollecting();
     }
     public void StartCollecting()
