@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SoundLoudness : MonoBehaviour
 {
@@ -49,6 +50,8 @@ public class SoundLoudness : MonoBehaviour
         if (micPosition < 0) return 0;
         MicrophoneManager.AudioClip.GetData(waveData, micPosition);
 
+        Normalize(waveData);
+       
         //Root Mean Square value calculation
         float rmsvalue = 0.0f;
         for (int i = 0; i < _sampleWindow; i++)
@@ -60,6 +63,18 @@ public class SoundLoudness : MonoBehaviour
         float decibels = 20 * Mathf.Log10(rmsvalue / 0.01f);
 
         return rmsvalue;
+    }
+
+    //Normalización multiplicado por 1/max del array
+    void Normalize(float [] arr)
+    {
+        //Normalización de los datos
+        float max = arr.Max();
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            arr[i] = arr[i] * (1 / max);
+        }
     }
 
     void Update()
