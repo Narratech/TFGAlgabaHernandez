@@ -77,9 +77,12 @@ public class PRCS : MonoBehaviour
     }
     public void DrawData()
     {
-        Answer.text = active.ToString();
-        Question.text = questions[position];
-        Numero.text = "Pregunta " + (position +1) ;
+        if (position < questions.Length)
+        {
+            Answer.text = active.ToString();
+            Question.text = questions[position];
+            Numero.text = "Pregunta " + (position + 1);
+        }
 
 
        //  Debug.Log(active);
@@ -88,13 +91,16 @@ public class PRCS : MonoBehaviour
     public void addAnswer(int number)
     {
         
-        answers[position] = number;
-        position++;
-        DT.AddAnswer(number);
-
-        if(position >= 12)
+        if(position >= 11)
         {
             finish();
+        }
+        else
+        {
+            answers[position] = number;
+            position++;
+            DT.AddAnswer(number);
+
         }
 
     }

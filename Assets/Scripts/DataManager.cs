@@ -7,7 +7,7 @@ public class DataManager : MonoBehaviour
     public static DataManager instance = null;
     public GameObject Preguntas;
     SaveDataManager SD;
-    float timer = 15.0f;
+    public float timer = 60.0f;
     bool finished = false;
     bool started = false;
     public TextMesh contador;
@@ -50,6 +50,8 @@ public class DataManager : MonoBehaviour
     public void setStart(bool  aux)
     {
         started = aux;
+        if (started) contador.gameObject.SetActive(true);
+        else contador.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,6 +63,7 @@ public class DataManager : MonoBehaviour
             if (timer < 0)
             {
                 finished = true;
+                contador.gameObject.SetActive(false);
                 SD.Test();
                // float[] aux = new float[7];
                 SD.SaveData("Gazes", Gazes);
