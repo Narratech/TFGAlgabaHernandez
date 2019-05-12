@@ -4,6 +4,7 @@ import SoundLoudness
 import Emotions
 import HandAnalytics
 import GazeAnalytics
+import Answers
 import os
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -36,15 +37,15 @@ for filename in os.listdir(dataDir):
 
             elif (dataType == 'LeftHand' or dataType == 'RightHand'):
                 dataArray = np.array(jso['data'])
-                fig = HandAnalytics.DrawHandAnalytics(dataArray, step)
+                fig = HandAnalytics.DrawHandAnalytics(dataArray, 1)
 
             elif (dataType == 'Gazes'):
                 dataArray = np.array(jso['data'])
-                fig = GazeAnalytics.DrawGazeAnalytics(dataArray,step)
+                fig = GazeAnalytics.DrawGazeAnalytics(dataArray,1)
 
-            else:
+            elif(dataType == 'Answers'):
                 dataArray = np.array(jso['data'])
-                fig = SoundLoudness.DrawSoundLoudness(soundArray, step)
+                fig = Answers.DrawAnswerAnalytics(dataArray)
 
             if(fig is not None):
                 fig.suptitle(fileN)

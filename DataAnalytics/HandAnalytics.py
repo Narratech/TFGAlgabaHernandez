@@ -50,7 +50,7 @@ def DrawHandAnalytics(floatArray, interval):
     plt.plot(steps, zArray, '-', color = 'green', label = 'Eje Z')
 
 
-
+    '''
     plt.plot(steps, [desviacionX for x in steps], '-', label = "desviavion tipica X", color = 'red')
     plt.plot(steps, [mediaX for x in steps], '-', label = 'media X', color= 'brown')
     plt.plot(steps, [medianaX for x in steps], '-', label = 'mediana X', color = 'orange')
@@ -62,7 +62,7 @@ def DrawHandAnalytics(floatArray, interval):
     plt.plot(steps, [desviacionZ for x in steps], '-', label = "desviavion tipica Z", color = 'black')
     plt.plot(steps, [mediaZ for x in steps], '-', label = 'media Z', color= 'gray')
     plt.plot(steps, [medianaZ for x in steps], '-', label = 'mediana Z', color = 'beige')
-
+    '''
 
     plt.ylabel('Valor de la mano por coordenada')
 
