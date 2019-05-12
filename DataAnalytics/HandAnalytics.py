@@ -64,8 +64,9 @@ def DrawHandAnalytics(floatArray, interval):
     plt.plot(steps, xArray, '-', color= 'blue', label = 'Eje X')
     plt.plot(steps, yArray, '-', color = 'red', label = 'Eje Y')
     plt.plot(steps, zArray, '-', color = 'green', label = 'Eje Z')
-    plt.ylim(0, 0.5)
-    plt.ylabel('Valor de la mano por coordenada')
+    plt.ylim(0, 1)
+    plt.ylabel('Velocidad')
+    plt.xlabel('Tiempo')
 
     plt.legend()
     return fig
