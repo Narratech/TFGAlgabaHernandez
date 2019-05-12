@@ -18,7 +18,14 @@ def DrawEmotions(vokaArr):
         i = i +5
 
     fig = plt.figure()
-    plt.bar([0,1,2,3,4,5], emotions, 0.9)
+    barlist = plt.bar([0,1,2,3,4,5], emotions, 0.9)
+    barlist[0].set_color('green')
+    barlist[1].set_color('yellow')
+    barlist[2].set_color('blue')
+    barlist[3].set_color('red')
+    barlist[4].set_color('purple')
+    barlist[5].set_color('beige')
+
     return fig
 
 

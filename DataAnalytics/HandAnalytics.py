@@ -38,32 +38,33 @@ def DrawHandAnalytics(floatArray, interval):
     coeficiente_variacion_z = desviacionZ/mediaZ
 
 
-    print("El coeficiente de variacion X fué: ", (coeficiente_variacion_x*100), '%')
-    print("El coeficiente de variacion Y fué: ", (coeficiente_variacion_y*100), '%')
-    print("El coeficiente de variacion Z fué: ", (coeficiente_variacion_z*100), '%')
+    print("\n-------Eje X --------")
+    print("Media: ", mediaX)
+    print("Mediana: ", medianaX)
+    print("Desviación Típica: ", desviacionX)
+    print("El coeficiente de variacion en eje X: ", (coeficiente_variacion_x*100), '%')
+    print("\n")
 
+    print("\n-------Eje Y --------")
+    print("Media: ", mediaY)
+    print("Mediana: ", medianaY)
+    print("Desviación Típica: ", desviacionY)
+    print("El coeficiente de variacion en eje Z: ", (coeficiente_variacion_y*100), '%')
+    print("\n")
+    
+    print("\n-------Eje Z --------")
+    print("Media: ", mediaZ)
+    print("Mediana: ", medianaZ)
+    print("Desviación Típica: ", desviacionZ)
+    print("El coeficiente de variacion en eje Z: ", (coeficiente_variacion_z*100), '%')
+    print("\n")
 
 
     fig = plt.figure()
     plt.plot(steps, xArray, '-', color= 'blue', label = 'Eje X')
     plt.plot(steps, yArray, '-', color = 'red', label = 'Eje Y')
     plt.plot(steps, zArray, '-', color = 'green', label = 'Eje Z')
-
-
-    '''
-    plt.plot(steps, [desviacionX for x in steps], '-', label = "desviavion tipica X", color = 'red')
-    plt.plot(steps, [mediaX for x in steps], '-', label = 'media X', color= 'brown')
-    plt.plot(steps, [medianaX for x in steps], '-', label = 'mediana X', color = 'orange')
-
-    plt.plot(steps, [desviacionY for x in steps], '-', label = "desviavion tipica Y", color = 'yellow')
-    plt.plot(steps, [mediaY for x in steps], '-', label = 'media Y', color= 'pink')
-    plt.plot(steps, [medianaY for x in steps], '-', label = 'mediana Y', color = 'purple')
-    
-    plt.plot(steps, [desviacionZ for x in steps], '-', label = "desviavion tipica Z", color = 'black')
-    plt.plot(steps, [mediaZ for x in steps], '-', label = 'media Z', color= 'gray')
-    plt.plot(steps, [medianaZ for x in steps], '-', label = 'mediana Z', color = 'beige')
-    '''
-
+    plt.ylim(0, 0.5)
     plt.ylabel('Valor de la mano por coordenada')
 
     plt.legend()

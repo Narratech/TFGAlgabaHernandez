@@ -32,9 +32,9 @@ def DrawGazeAnalytics(floatArray, interval):
 
     fig = plt.figure()
 
-    plt.bar(steps, gaze1, barwidth, alpha = 0.3, color = 'blue', label = 'Mirando a publisher 1')
-    plt.bar(steps, gaze2, barwidth, alpha = 0.3, color = 'red', label = 'Mirando a publisher 2')
-    plt.bar(steps, gaze3,barwidth,  alpha = 0.3, color = 'green', label = 'Mirando a publisher 3')
+    plt.bar(steps, gaze1, barwidth, alpha = 0.4, color = 'blue', label = 'Mirando a publisher 1')
+    plt.bar(steps, gaze2, barwidth, alpha = 0.4, color = 'red', label = 'Mirando a publisher 2')
+    plt.bar(steps, gaze3, barwidth,  alpha = 0.4, color = 'green', label = 'Mirando a publisher 3')
     plt.legend()
 
     return fig

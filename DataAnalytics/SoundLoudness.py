@@ -34,6 +34,7 @@ def DrawSoundLoudness(floatArray, interval):
     
 
     plt.xscale('linear')
+    plt.ylim(0, 0.5)
     plt.ylabel('Valor medio cuadrático de sonido para el instante de tiempo')
     plt.xlabel('Tiempo')
     plt.legend()
