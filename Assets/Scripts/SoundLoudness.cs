@@ -50,7 +50,7 @@ public class SoundLoudness : MonoBehaviour
         if (micPosition < 0) return 0;
         MicrophoneManager.AudioClip.GetData(waveData, micPosition);
 
-        Normalize(waveData);
+        //Normalize(waveData);
        
         //Root Mean Square value calculation
         float rmsvalue = 0.0f;

@@ -7,10 +7,13 @@ public class HandsVelocity : MonoBehaviour
     public DataManager DT;
     float velocityx;
     float velocityy;
+    float velocityz;
     float positionx;
+    float positiony;
+    float positionz;
     float lastx;
     float lasty;
-    float positiony;
+    float lastz;
 
     //Tiempo de refresco de toma 1 == 1s
     public float refreshtime = 1;
@@ -20,7 +23,7 @@ public class HandsVelocity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        velocityy = velocityx = positionx = positiony = lastx = lasty= 0;
+        velocityy = velocityx = velocityz = positionx = positiony = positionz = lastx = lasty = lastz = 0;
        
       //  Debug.Log("Hola");
         StartCoroutine("WriteData");
@@ -48,16 +51,19 @@ public class HandsVelocity : MonoBehaviour
           ///  Debug.Log("Hola1 12311qw");
             positionx = transform.position.x;
             positiony = transform.position.y;
+            positionz = transform.position.z;
 
             velocityx = (positionx - lastx) / refreshtime;
             velocityy = (positiony - lasty) / refreshtime;
+            velocityz = (positionz - lastz) / refreshtime;
             if(id == 0)
-            DT.AddHandData("right", velocityx, velocityy);
+            DT.AddHandData("right", velocityx, velocityy, velocityz);
             else if( id == 1)
-            DT.AddHandData("left", velocityx, velocityy);
+            DT.AddHandData("left", velocityx, velocityy, velocityz);
             //Debug.Log(" ID : " + id + " " + "Velocity X " + velocityx + " Velocity Y " + velocityy);
             lastx = positionx;
             lasty = positiony;
+            lastz = positionz;
             yield return new WaitForSeconds(refreshtime);
 
         }

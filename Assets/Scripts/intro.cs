@@ -19,16 +19,19 @@ public class intro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonDown("Fire1"))
         {
             contador++;
-
+            GetComponent<AudioSource>().Play();
             if (contador >= frases.Length)
             {
                 Finish();
             }
-            if(contador < frases.Length)
+            if (contador < frases.Length)
+            {
                 text.text = frases[contador];
+                if (contador == frases.Length - 1) text.color = Color.yellow;
+            }
         }
     }
     void Finish()

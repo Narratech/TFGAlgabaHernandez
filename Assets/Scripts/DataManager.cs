@@ -77,7 +77,7 @@ public class DataManager : MonoBehaviour
             }
             else
             {
-                contador.text = "" + timer;
+                contador.text = "" + (int)timer;
             }
             //   Debug.Log(timer);
         }
@@ -99,7 +99,7 @@ public class DataManager : MonoBehaviour
 
 
     //Hands
-    public void AddHandData(string hand,float x, float y)
+    public void AddHandData(string hand,float x, float y, float z)
     {
       //  Debug.Log("ADddingHand");
 
@@ -109,11 +109,13 @@ public class DataManager : MonoBehaviour
             {
                 Rhand.Add(x);
                 Rhand.Add(y);
+                Rhand.Add(z);
             }
             else
             {
                 Lhand.Add(x);
                 Lhand.Add(y);
+                Lhand.Add(z);
 
             }
         }

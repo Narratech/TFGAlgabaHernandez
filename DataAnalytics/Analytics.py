@@ -35,9 +35,8 @@ for filename in os.listdir(dataDir):
                 fig = Emotions.DrawEmotions(vokaturiArr)     
 
             elif (dataType == 'LeftHand' or dataType == 'RightHand'):
-                #dataArray = np.array(jso['data'])
-                #fig = HandAnalytics.DrawHandAnalytics(dataArray, step)
-                ss = 0
+                dataArray = np.array(jso['data'])
+                fig = HandAnalytics.DrawHandAnalytics(dataArray, step)
 
             elif (dataType == 'Gazes'):
                 dataArray = np.array(jso['data'])
