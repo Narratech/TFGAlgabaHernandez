@@ -25,6 +25,8 @@ def DrawSoundLoudness(floatArray, interval):
     tiempoSilencio = (np.count_nonzero(silence))*interval
     print("Tiempo de silencio: ", '%.2f'%(tiempoSilencio))
     print("Desviación tipica: ", desviacion)
+    print("Media: ", media)
+    print("Mediana: ", mediana)
     #print("El coeficiente de variacion fué: ", (coeficiente_variacion*100), '%')
 
     fig = plt.figure()
