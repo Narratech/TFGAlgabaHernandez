@@ -52,8 +52,6 @@ public class PRCS : MonoBehaviour
 
         var aux = Input.GetAxis("Oculus_GearVR_RThumbstickY");
 
-        Debug.Log("Input : " + Input.GetAxis("Oculus_GearVR_RThumbstickY").ToString());
-        Debug.Log("Aux: " + aux.ToString());
 
         if (!finished)
         {
