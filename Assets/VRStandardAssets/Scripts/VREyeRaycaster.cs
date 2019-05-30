@@ -14,7 +14,6 @@ namespace VRStandardAssets.Utils
 
         [SerializeField] private Transform m_Camera;
         [SerializeField] private LayerMask m_ExclusionLayers;           // Layers to exclude from the raycast.
-        [SerializeField] private Reticle m_Reticle;                     // The reticle, if applicable.
         [SerializeField] private VRInput m_VrInput;                     // Used to call input based events on the current VRInteractiveItem.
         [SerializeField] private bool m_ShowDebugRay;                   // Optionally show the debug ray.
         [SerializeField] private float m_DebugRayLength = 5f;           // Debug ray length.
@@ -85,9 +84,6 @@ namespace VRStandardAssets.Utils
 
                 m_LastInteractible = interactible;
 
-                // Something was hit, set at the hit position.
-                if (m_Reticle)
-                    m_Reticle.SetPosition(hit);
 
                 if (OnRaycasthit != null)
                     OnRaycasthit(hit);
@@ -97,10 +93,6 @@ namespace VRStandardAssets.Utils
                 // Nothing was hit, deactive the last interactive item.
                 DeactiveLastInteractible();
                 m_CurrentInteractible = null;
-
-                // Position the reticle at default distance.
-                if (m_Reticle)
-                    m_Reticle.SetPosition();
             }
         }
 

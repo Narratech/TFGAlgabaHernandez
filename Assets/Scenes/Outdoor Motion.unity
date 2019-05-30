@@ -980,7 +980,6 @@ MonoBehaviour:
   m_ExclusionLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Reticle: {fileID: 0}
   m_VrInput: {fileID: 0}
   m_ShowDebugRay: 0
   m_DebugRayLength: 5
@@ -1376,7 +1375,6 @@ MonoBehaviour:
   m_ExclusionLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Reticle: {fileID: 0}
   m_VrInput: {fileID: 0}
   m_ShowDebugRay: 0
   m_DebugRayLength: 5
@@ -2254,7 +2252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 50e8d87218c9f9649975e35ca3232d32, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3466,7 +3464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!102 &999562442
 TextMesh:
   serializedVersion: 3
