@@ -45,7 +45,10 @@ public class CharacterGaze : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (state) GazeManager.frameLooking(player);
-        else GazeManager.frameNotLooking(player);
+        if (GazeManager != null)
+        {
+            if (state) GazeManager.frameLooking(player);
+            else GazeManager.frameNotLooking(player);
+        }
     }
 }
